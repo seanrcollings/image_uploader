@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+
+{% block content %}
+  <div class='new'>
+    <h1 class='new-title'>Upload An Image</h1>
+    <form class='new-form' method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit New Post</button>
+    </form>
+  </div>
+{% endblock content %}

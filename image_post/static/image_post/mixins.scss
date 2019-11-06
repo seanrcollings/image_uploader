@@ -1,0 +1,26 @@
+@mixin blue-button($font-size) {
+    border: none;
+    background-color: #36368a;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    font-size: $font-size;
+    box-shadow: 1px 1px 3px black;
+    text-decoration: none !important;
+    transition: all .3s ease;
+  
+    &:focus { outline: none }
+  
+    &:active {
+      background-image: linear-gradient(#22265e, #36368a) !important;
+      outline: none;
+    }
+  
+    &:hover {
+      background-color: #3d44a7;
+      // background-image: linear-gradient(#36368a, #22265e);
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
