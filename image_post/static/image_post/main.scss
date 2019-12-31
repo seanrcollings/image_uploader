@@ -1,12 +1,47 @@
-@import 'mixins';
-@import 'index';
-@import 'detail';
+@import "mixins";
+@import "index";
+@import "detail";
+@import "new";
 
-html, body{ margin: 0px; } 
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #282C34;
-    padding: 10px;
-    color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #282c34;
+  color: white;
+  display: grid;
+  grid-template-columns: [s nav-s] 100px [nav-e content-s] 1fr [content-e e];
+
+  nav {
+    display: block;
+    position: fixed;
+    width: 100px;
+    height: 100%;
+    background-color: #202020;
+    text-align: center;
+  
+    a {
+      padding: 10px 0px;
+      display: inline-block;
+      width: 100%;
+      text-decoration: none;
+      color: grey;
+
+      i {font-size: 30px;}
+      span {font-size: 18px;}
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.479);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .content {
+    grid-column: content-s/content-2;
+  }
 }

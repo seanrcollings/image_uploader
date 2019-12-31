@@ -7,10 +7,33 @@
         <title>Document</title>
         {% load sass_tags %}
         <link href="{% sass_src 'image_post/main.scss' %}" rel="stylesheet" type="text/css" />
+        <script src="https://kit.fontawesome.com/892135f821.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        {% block content %}
-        
-        {% endblock content %}    
+        <nav>
+            <a href='/'>
+                <i class="fas fa-home"></i><br />
+                <span>Home</span>
+            </a>
+            <a href='/search'>
+                <i class="fas fa-search"></i><br/>
+                <span>Search</span>
+            </a>
+            <a href='/new'>
+                <i class="fas fa-plus"></i><br />
+                <span>Upload</span>
+            </a>
+        </nav>
+
+        <div class='content'>
+            {% block content %}
+            
+            {% endblock content %}    
+        </div>
     </body>
+    <script>
+        function toggleOverlay(element) {
+            element.children[1].children[0].classList.toggle('hide')
+        }
+    </script>
 </html>

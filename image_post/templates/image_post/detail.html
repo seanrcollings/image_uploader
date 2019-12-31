@@ -6,7 +6,6 @@
         <h2 class='detail-title'>{{ imagepost.title }}</h2>
         <p class='detail-desc'>{{ imagepost.description }}</p>
         <img class='detail-img' src="{{imagepost.image.url}}" alt='post'/>
-        
         <form method="post" action="{% url 'image_post:vote' imagepost.id %}">
             {% csrf_token %}
             <button class='detail-button'>VOTE</button>

@@ -1,0 +1,19 @@
+.new {
+    text-align: center;
+    &-title {
+
+    }
+
+    &-form {
+        input[type='text'] {
+            border: none;
+            padding: 4px;
+            width: 500px;
+        }
+        
+        .submit {
+            @include blue-button(17px)
+        }
+    }
+
+}
