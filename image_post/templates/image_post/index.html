@@ -1,7 +1,7 @@
 {% extends './base.html' %}
 
 {% block content %}
-  <div class='index'>
+  <div class='index image-container'>
     {% for post in image_posts %}
       <a href="{% url 'image_post:detail' post.id %}" class='image-post' onmouseover="toggleOverlay(this)" onmouseout="toggleOverlay(this)">
         <img class='image-post-img' src="{{post.image.url}}" alt='post'/>

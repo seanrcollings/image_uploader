@@ -10,13 +10,3 @@ class ImagePost(models.Model):
 
     def __str__(self):
         return self.title
-
-class Tag(models.Model):
-    name = models.CharField(max_length=35)
-    description = models.CharField(max_length=100)
-    weight = models.IntegerField(default=0)
-    post = models.ManyToManyField(ImagePost)
-    pub_date = models.DateTimeField('date published', auto_now_add=True)
-
-    def __str__(self):
-        return self.name

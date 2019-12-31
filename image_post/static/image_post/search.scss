@@ -1,0 +1,47 @@
+.search {
+    position: relative;
+    display: grid;
+    grid-template-rows: [s search-s] 100px [search-e results-s] 1fr [results-e e];
+
+    &-form {
+        position: fixed;
+        z-index: 10;
+        width: 100%;
+        background-color: #000000b0;
+        display: flex;
+        align-items: center;
+        padding-left: 15px;
+        font-size: 30px;
+        color: grey;
+
+
+        input {
+            border: none;
+            background-color: transparent;
+            color: white;
+            transition: all .3s ease;
+            // width: 100%;
+            padding: 20px;
+            font-size: 30px;
+            width: 100%;
+
+            &:focus {
+                outline: transparent;
+            }
+        }
+    }
+
+    &-results {
+        grid-row: results-s/results-e;
+    }
+
+    &-nothing {
+        font-size: 60px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, 200%);
+
+    }
+}

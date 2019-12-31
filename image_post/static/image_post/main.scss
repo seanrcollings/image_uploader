@@ -2,6 +2,7 @@
 @import "index";
 @import "detail";
 @import "new";
+@import "search";
 
 html,
 body {
@@ -23,6 +24,7 @@ body {
     height: 100%;
     background-color: #202020;
     text-align: center;
+    z-index: 11;
   
     a {
       padding: 10px 0px;

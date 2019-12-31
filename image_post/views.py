@@ -1,3 +1,4 @@
+from difflib import SequenceMatcher
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views import generic
 from django.shortcuts import get_object_or_404, render
@@ -41,9 +42,14 @@ def search(request):
     query = request.GET.get('q')
     if query is None:
         return render(request, template_name='image_post/search.html')
-    else:
-        query = query.split()
-        unique_posts = []
-        for tag in query:
-            unique_posts += ImagePost.objects.filter(title__trigram_similar=tag)
-        return render(request, template_name='image_post/search.html', context={'posts': set(unique_posts)})
+    else: 
+        # TODO: Look into best ways to search for things
+        posts = ImagePost.objects.all()
+        search_results = []
+        print(query)
+        for post in posts:
+            title_ratio = SequenceMatcher(None, query.lower(), post.title.lower()).ratio()
+            description_ratio = SequenceMatcher(None, query.lower(), post.description.lower()).ratio()
+            if title_ratio >= .6 or description_ratio >= .6:
+                search_results.append(post) 
+        return render(request, template_name='image_post/search.html', context={'posts': search_results, "query": query})
