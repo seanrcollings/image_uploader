@@ -1,19 +1,80 @@
 .new {
-    text-align: center;
-    &-title {
+  text-align: center;
+  &-title {
+  }
 
+  &-form {
+    max-width: 500px;
+    margin: auto;
+
+    input[type="text"] {
+      border: none;
+      padding: 10px;
+      width: 96%;
+      background-color: #3D3D46;
+      color: white;
+      margin-bottom: 10px;
+
+      &:focus {
+        outline: none;
+        border-bottom: 1px solid white;
+      }
+    }
+    
+    .label {
+      text-align: left;
+      background-color: #3D3D46;
+      padding: 5px;
+      padding-bottom: 0px;
     }
 
-    &-form {
-        input[type='text'] {
-            border: none;
-            padding: 4px;
-            width: 500px;
-        }
-        
-        .submit {
-            @include blue-button(17px)
-        }
+    .submit {
+      @include blue-button(17px);
+    }
+  }
+
+  &-upload {
+    &-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      box-sizing: content-box;
+      border: 2px dashed #ccc;
+      color: white;
+
+
+      #preview {
+        max-width: 350px;
+        max-height: 300px;
+        display: block;
+        margin: auto;
+        padding-bottom: 20px;
+      }
+
+
+      & > input[type="file"] {
+        font-size: 200px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+
+      &.highlight {
+        border-color: purple;
+        background-color: rgba(0, 0, 0, 0.507);
+      }
     }
 
+    &-button {
+      width: 500px;
+      height: 200px;
+      background-color: transparent;
+      border: none;
+      font-size: 30px;
+      font-weight: bold;
+      color: inherit;
+      overflow-wrap: break-word;
+    }
+  }
 }

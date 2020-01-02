@@ -1,31 +1,31 @@
 {% extends './base.html' %}
 {% block content %}
-   <div class='search'>
-        <form action="{% url 'image_post:search' %}" method="get" class='search-form'>
-            <i class="fas fa-search"></i><input type='text' name='q' value="{{query}}" placeholder='Search'>
-        </form>
-        {% if posts %}
-        
-        <div class='search-results image-container'>
-            {% for post in posts %}
-                <a href="{% url 'image_post:detail' post.id %}" class='image-post' onmouseover="toggleOverlay(this)"
-                    onmouseout="toggleOverlay(this)">
-                    <img class='image-post-img' src="{{post.image.url}}" alt='post' />
-                    <div class='image-post-overlay'>
-                    <div class='text-wrapper hide'>
-                        <span class='image-post-votes'>{{ post.votes }}</span>
-                        <span>
-                            <h2 class='image-post-title'>{{ post.title }}</h2>
-                            <p class='image-post-desc'>{{ post.description }}</p>
-                        </span>
-                        </div>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
-        {% elif posts|length == 0 %}
-        <div class='search-nothing'>No posts match current search</div>
-        {% endif %}
-   </div>
+  <div class='search'>
+    <form action="{% url 'image_post:search' %}" method="get" class='search-form'>
+      <i class="fas fa-search"></i><input type='text' name='q' value="{{query}}" placeholder='Search'>
+    </form>
+    {% if posts %}
+    
+    <div class='search-results image-container'>
+    {% for post in posts %}
+        <a href="{% url 'image_post:detail' post.id %}" class='image-post' onmouseover="toggleOverlay(this)"
+          onmouseout="toggleOverlay(this)">
+          <img class='image-post-img' src="{{post.image.url}}" alt='post' />
+          <div class='image-post-overlay'>
+          <div class='text-wrapper hide'>
+            <span class='image-post-votes'>{{ post.votes }}</span>
+            <span>
+              <h2 class='image-post-title'>{{ post.title }}</h2>
+              <p class='image-post-desc'>{{ post.description }}</p>
+            </span>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    {% elif posts|length == 0 %}
+      <div class='search-nothing'>No posts match current search</div>
+    {% endif %}
+  </div>
 {% endblock content %}
 

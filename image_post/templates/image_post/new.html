@@ -1,12 +1,55 @@
 {% extends './base.html' %}
 
 {% block content %}
-  <div class='new'>
-    <h1 class='new-title'>Upload An Image</h1>
+<div class='new'>
+  <h1 class='new-title'>Upload An Image</h1>
     <form class='new-form' method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.as_p }}
-      <button class='submit' >Upload Image</button>
+      
+      
+        <div>
+          <div class='label' >{{ form.title.label }}</div> 
+          <span >{{ form.title }}</span><br/>
+        </div>
+        <div class='label' >{{ form.description.label }}</div> 
+        <span>{{ form.description }}</span>
+      <div class='new-upload-wrapper'>  
+        <button id='btn' class='new-upload-button'><i class="fas fa-file-upload"></i> Upload</button>
+        {{ form.image }}
+        <img id='preview'>
+      </div><br/>
+      <button class="submit">Submit</button>
     </form>
-  </div>
+</div>
+<script>
+  const fileElement = document.getElementById('id_image')
+  fileElement.onchange = function () {
+    document.getElementById('btn').innerHTML = fileElement.files[0].name
+
+    var reader = new FileReader()
+
+    reader.onload = function (e) {
+      document.getElementById('preview').src = e.target.result;
+    }
+    reader.readAsDataURL(this.files[0])
+  }
+
+  const dropArea = document.getElementsByClassName('new-upload-wrapper')[0]
+  
+  ;['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false)
+  })
+
+  ;['dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, unhighlight, false)
+  })
+
+  function highlight(e) {
+    dropArea.classList.add('highlight')
+  }
+
+  function unhighlight(e) {
+    dropArea.classList.remove('highlight')
+  }
+</script>
 {% endblock content %}
